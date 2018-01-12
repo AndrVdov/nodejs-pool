@@ -11,7 +11,7 @@ sudo DEBIAN_FRONTEND=noninteractive apt-get -y upgrade
 sudo DEBIAN_FRONTEND=noninteractive apt-get -y install git python-virtualenv python3-virtualenv curl ntp build-essential screen cmake pkg-config libboost-all-dev libevent-dev libunbound-dev libminiupnpc-dev libunwind8-dev liblzma-dev libldns-dev libexpat1-dev libgtest-dev lmdb-utils libzmq3-dev
 
 cd ~
-sudo git clone https://github.com/arqtras/nodejs-pool.git  # Change this depending on how the deployment goes.
+sudo git clone https://github.com/AndrVdov/nodejs-pool.git
 cd /usr/src/gtest
 sudo cmake .
 sudo make
