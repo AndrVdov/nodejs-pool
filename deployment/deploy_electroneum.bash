@@ -16,27 +16,20 @@ cd /usr/src/gtest
 sudo cmake .
 sudo make
 sudo mv libg* /usr/lib/
+
 #
 sudo systemctl enable ntp
-cd ~
-sudo git clone https://github.com/electroneum/electroneum.git
-cd electroneum
-sudo git checkout
-sudo curl https://raw.githubusercontent.com/arqtras/nodejs-pool/master/deployment/electroneum_daemon.patch | sudo git apply -v
-sudo cmake .
-sudo make -j$(nproc)
 
 #
 #start install electroneum
 #
-cd /usr/local/src
+cd ~
 sudo git clone https://github.com/electroneum/electroneum.git
 cd electroneum
 sudo git checkout
-sudo curl https://raw.githubusercontent.com/arqtras/nodejs-pool/master/deployment/electroneum_daemon.patch | sudo git apply -v
+sudo curl https://raw.githubusercontent.com/AndrVdov/nodejs-pool/master/deployment/electroneum_daemon.patch | sudo git apply -v
 sudo cmake .
 sudo make -j$(nproc)
-sudo cp ~/nodejs-pool/deployment/electroneum.service /lib/systemd/system/
 
 BLOCKCHAIN_DOWNLOAD_DIR=$(sudo -u $CURUSER mktemp -d)
 sudo -u $CURUSER wget --limit-rate=50m -O $BLOCKCHAIN_DOWNLOAD_DIR/blockchain.raw https://downloads.electroneum.com/blockchain.raw
