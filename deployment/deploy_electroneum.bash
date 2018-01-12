@@ -16,9 +16,15 @@ cd /usr/src/gtest
 sudo cmake .
 sudo make
 sudo mv libg* /usr/lib/
-cd ~
+#
 sudo systemctl enable ntp
-
+cd ~
+sudo git clone https://github.com/electroneum/electroneum.git
+cd electroneum
+sudo git checkout
+sudo curl https://raw.githubusercontent.com/arqtras/nodejs-pool/master/deployment/electroneum_daemon.patch | sudo git apply -v
+sudo cmake .
+sudo make -j$(nproc)
 
 #
 #start install electroneum
